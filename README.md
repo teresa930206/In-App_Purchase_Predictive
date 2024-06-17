@@ -7,6 +7,7 @@ voting method and compared metrics with individual models to aid investors in de
 
 ***Data Dictionary***
 ![Sample Graph](graphs/datadictionary.png)
+<img src="graphs/datadictionary.png" alt="Graph" width="500">
 
 After reviewing the features of the initial dataset, we are curious about the availability and transparency of “In-App Purchases” and see the role it plays in shaping user preferences, app strategies, and the overall competitiveness and success of mobile applications in the market.
 ***Use Cases:***
