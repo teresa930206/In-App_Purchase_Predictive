@@ -75,6 +75,7 @@ I checked the outlier of numerical variables using **IQR value and box plot**.
 Additionally, I only processed the outliers in **Install_Avg** and retain outliers in other fields to accurately represent real-world app store installation situations.
 
 ## **Exploratory Data Analysis**
+
 After initializing the data cleaning and imputation, we conducted an exploration of the variables.
 
 >"Install_Avg" and "In-App Purchases" relationship: When "In-App Purchases" is 0, the average "Install Avg" is significantly higher at 130,870, compared to 1,195,096 when "In-App Purchases" is 1.
@@ -115,6 +116,7 @@ We imported the train_test_split function from sklearn.model_selection to random
 ## **Random Forest Classifier**
 
 ***Hyperparameter Tunning (Cross Validation)***
+
 In hyperparameter tuning, we import the **RandomizedSearchCV** function from **sklearn.model_selection** to optimize the model's performance. We apply the best hyperparameter on the train datasets (X_train, y_train).
 
 <img src="graphs/rf_1.png" alt="Graph" width="500">
@@ -122,6 +124,7 @@ In hyperparameter tuning, we import the **RandomizedSearchCV** function from **s
 Pairs of parameters were examined using cross-validation, and the best parameters were selected based on the 'Precision' score, which considers balanced model performance.
 
 ***Model_Tuning (Controlling imBalance)***
+
 The target variable exhibited an imbalance, with the number of data points labeled as '1' constituting 33% of the total data, while '0' accounted for the rest. While the imbalance was not severe, we sought to enhance the model's performance by applying class weights and **SMOTE (Synthetic Minority Over-sampling Technique)**.
 
 After applying class weights and SMOTE, the F1 score improved; however, our primary metric of interest, 'precision,' did not exhibit the same improvement. As a result, we concluded that the basic Random Forest model, without any further tuning, performed best for our purposes.
@@ -129,6 +132,7 @@ After applying class weights and SMOTE, the F1 score improved; however, our prim
 <img src="graphs/rf_2.png" alt="Graph" width="500">
 
 ***Model Evaluation***
+
 The best random forest model has a precision of 0.73, a recall of 0.53, and an F1-score of 0.61. Comparatively, higher precision and lower recall indicate a large number of False Negatives. As seen in the confusion matrix, there are 13,688 positives ('purchased') misclassified as negatives ('no purchased'). In comparison, the number of False Positives is low at 5512. This model exhibits higher precision and comparably lower recall.
 
 <img src="graphs/rf_3.png" alt="Graph" width="500">
@@ -141,6 +145,7 @@ The Precision-Recall curve (PR curve) reflects poor performance in terms of reca
 Additionally, it took **1.53 seconds to train this model**.
 
 ***Feature Importance***
+
 In the Random forest, the following features were considered important features in the specified order: ‘Update Interval Days’, 'Rating', 'Min Version', ‘Category’, Rating Count', ‘Editors Choice’, 'Free', 'size_numeric(KB)', 'Ad supported', ‘Currency’, ‘Price','Installs_average' and , 'Content Rating'.
 
 **Update Interval Days** plays a significant role in reducing impurity, suggesting that it's a strong predictor for splitting the data at the root node or top-level nodes of the decision trees in the forest. 'Rating' is the second most important feature for reducing impurity, indicating its importance in making decisions in the trees. On the other hand, 'Price,' 'Installs_average,' and 'Content Rating' reduce less impurity, while the other features show similar impacts on reducing impurity.
@@ -150,13 +155,14 @@ The **Update Interval Days** has the most significant impact. When the 'Update I
 <img src="graphs/rf_5.png" alt="Graph" width="400">
 
 ## **Decision Tree Classifier**
-
 ***Hyperparameter Tunning***
+
 Random search was chosen for hyperparameter tuning, as random search is a more efficient method than grid search, especially in the case of large-scale hyperparameter spaces. Accuracy was set as the scoring criterion for the random search and 5-fold cross-validation was performed. Precision measures the accuracy of the model in positive category prediction. Cross-validation helps to evaluate the performance of the model without relying too much on the randomness of a single data partition.
 
 <img src="graphs/dt_1.png" alt="Graph" width="500">
 
 ***Model_Tuning (Controlling imBalance)***
+
 The ratio of 1 and 0 data adjusted by the undersampling method is 1:2. Although the imbalance is not serious, we tried to further improve the model's performance by applying class weights and SMOTE.
 
 After applying class weights and SMOTE, the F1 score improved, but the main metric we were concerned with, "precision", showed a significant decrease. Therefore, we conclude that the basic decision tree model best suits our purposes.
@@ -164,6 +170,7 @@ After applying class weights and SMOTE, the F1 score improved, but the main metr
 <img src="graphs/dt_2.png" alt="Graph" width="500">
 
 ***Model Evaluation***
+
 The test set was brought into the decision tree model with optimal hyperparameters for prediction. The resulting confusion matrix is shown below, and the model is optimized due to the imbalance in the category distribution of the target variable being balanced by the undersampling method. 0 (false) still has a higher prediction accuracy than 1 (true), but the model has a significant increase in the accuracy of the 1-category predictions.
 
 >**Confusion Matrix:**
@@ -179,6 +186,7 @@ The test set was brought into the decision tree model with optimal hyperparamete
 <img src="graphs/dt_4.png" alt="Graph" width="500">
 
 ***Feature Importance***
+
 Feature importance is a concept in machine learning that indicates the extent to which each feature (or variable) in a dataset contributes to the prediction or output of a model. In decision tree classification models, feature importance is usually defined by measuring the contribution of each feature during the splitting of tree nodes. This model relies on Gini impurity decrease as a measure. The greater the feature's contribution to reducing uncertainty, the higher its importance.
 
 According to the bar chart, the following features are considered important in the specified order: "install_avg", "size_numeric(KB)", "Ad_Supported", “Category”, "Min Version", "Content Rating", "Rating Count", "Update interval Days", and “Rating”, "Free", “Price”, “Currency”, " Editors Choice" is not considered an important feature. The reason for the highest score for "install_avg" might be that this variable is equivalent to reflection of the number of people who use the app, which helps to study the presence or absence of in-app purchases.
@@ -187,6 +195,7 @@ According to the bar chart, the following features are considered important in t
 
 ## **Gradient Boosting Classifier**
 ***Hyperparameter Tunning (Cross Validation)***
+
 In hyperparameter tuning, we import the **RandomizedSearchCV** function from **sklearn.model_selection** to optimize the model's performance. We apply the best hyperparameter on the train datasets (X_train, y_train)
 
 <img src="graphs/xg_1.png" alt="Graph" width="500">
@@ -194,30 +203,36 @@ In hyperparameter tuning, we import the **RandomizedSearchCV** function from **s
 Pairs of parameters were examined using cross-validation, and the best parameters were selected based on the 'Precision' score, which considers balanced model performance.
 
 ***Model_Tuning (Controlling imBalance)***
+
 To enhance the data imbalance performance, we implemented class_weights and employed SMOTE (Synthetic Minority Over-sampling Technique).
 Following these adjustments, the F1 score showed improvement in class_weight, although our main focus, 'precision,' didn't exhibit the same enhancement. As a result, we determined that the basic XGBoosting model, without further fine-tuning, delivered the best performance for our specific objectives.
 
 <img src="graphs/xg_2.png" alt="Graph" width="500">
 
 ***Model Evaluation***
+
 The basic XGBoosting exhibits good precision for In-App Purchase True (0.74), indicating accurate positive predictions. However, recall In-App Purchase True for is lower (0.59), meaning some actual positives were missed. The macro-average F1-score is 0.76, and the weighted average F1-score is 0.79, indicating decent model performance across both classes.
 
 ***Confusion Matrix***
+
 True Negative (52,009) is extremely higher than others, indicating that the model performs better in non-in-app purchases than in-app purchases. False Negative (11,771) is greater than False Postive (6,027), suggesting that the model failed to identify as "False" when they were actually "True."
 
 <img src="graphs/xg_3.png" alt="Graph" width="500">
 
 ***ROC Curve and AUC***
+
 The AUC value of 0.85 indicates indicates a strong model's ability to distinguish between “In-App Purchase”, with an 85% chance of correctly ranking a randomly chosen positive instance higher than a negative one.
 
 <img src="graphs/xg_4.png" alt="Graph" width="500">
 
 ***Precision-Recall Curve***
+
 The curve showed the lower performance of recall, which only have 0.59 in the model. In an ideal scenario, we want high precision and high recall. This corresponds to a point near the top-right corner of the curve. However, the curve goes down to the right button, indicating that the model fail to classify most positive values.
 
 <img src="graphs/xg_5.png" alt="Graph" width="500">
 
 ***Feature Importance***
+
 Feature importance provides insight into the relative importance of each feature in a model. The higher the importance, the more the feature influences the model's predictions. This information can guide us in feature selection, understanding the model's behavior, and making decisions related to model optimization and interpretability.
 
 As you can see in the following graph, the feature importance analysis reveals that "Install_Avg" is the most crucial predictor, with an importance score of 0.371, followed by "size_numeric(KB)" and "Category". Features like "Currency," "Editors Choice" have negligible importance, which near to zero.
@@ -236,6 +251,7 @@ After training the model in basic, class_weight, and SMOTE, all model perform we
 The target variable “In-App Purchase” rarely contained the information of the in-app purchases application. In other words, the variables contained class imbalance issues so we apply multiple method to fix the problem, such as “undersampling”, “class_weight”, and “SMOTE”. In the performance, we found that the model prefer “undersampling” while predicting “In-App Purchase”.
 
 ***Suggestion for models***
+
 Among the best models, XGBoost demonstrated the highest precision, enabling us to propose effective strategies for boosting in-app purchases.
 
 >**Key features that significantly influence in-app purchases:**
@@ -254,7 +270,17 @@ The model performs reasonably well in identifying false positives and cases with
 
 > All things considered, we recommend that investors consider their investment objectives in terms of "Category" in order to maximize their returns.
 
-
+## **Reference**
+Aaryansh Sahay, n.d., ROC/AUC in Machine Learning, medium.com,
+https://python.plainenglish.io/roc-auc-in-machine-learning-d70d4308f636
+scikit-learn, (n.d.). Plot different SVM classifiers in the iris dataset. scikit-learn: Machine Learning in Python.
+https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_display_object_visua lization.html#sphx-glr-auto-examples-miscellaneous-plot-display-object-visualization -py
+scikit-learn, (n.d.). sklearn.ensemble.GradientBoostingClassifier¶.
+https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingC lassifier.html
+Mode (2023). Pandas .groupby(), Lambda Functions, & Pivot Tables. Mode 
+https://mode.com/python-tutorial/pandas-groupby-and-python-lambda-functions/
+Google Play Store Apps. Kaggle 
+https://www.kaggle.com/datasets/gauthamp10/google-playstore-apps/data
 
 
 
