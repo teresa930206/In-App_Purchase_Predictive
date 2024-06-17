@@ -8,5 +8,4 @@ voting method and compared metrics with individual models to aid investors in de
 ***Data Dictionary***
 
 
-
 ![Sample Graph](graphs_/datadictionary.png)
