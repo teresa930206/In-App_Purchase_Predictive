@@ -13,7 +13,7 @@ After reviewing the features of the initial dataset, I am curious about the avai
 >***Use Cases:***
 >- Role: Software Investor
 >- Goal: Assists investors in identifying and leveraging the features of mobile apps that maximize their benefits.
->- Approach: Identify the best model for maximizing your company's benefits by predicting whether or not an app has "in-app purchases," >allowing investors to develop a more effective strategy for finding the apps with the highest ROI.
+>- Approach: Identify the best model for maximizing your company's benefits by predicting whether or not an app has "in-app purchases," allowing investors to develop a more effective strategy for finding the apps with the highest ROI.
 
 >***Model Selection:***
 >Given that our target variable, "In-App Purchase," and the majority of variables in the dataset are categorical values (True/False), we >conducted three tree-based classifier models in this report.
@@ -51,3 +51,18 @@ I dropped the columns that are highly unique or contain non-related information,
 I examined the dataset for null values, and the table below displays the total count of missing values for each variable that contains null values.
 
 <img src="graphs/missing_value.png" alt="Graph" width="500">
+
+## **Data Transform and Imputation**
+
+The dataset contained complicated categorical data, and many columns required preprocessing to be used for analysis and modeling.
+
+***Extraction and Converting Data for Analysis***
+
+<img src="graphs/extract_convert.png" alt="Graph" width="500">
+
+***Data Encoding***
+
+We applied ```LabelEncoder() from sklearn to encode the categorical values.
+<img src="graphs/data_encode.png" alt="Graph" width="500">
+
+
