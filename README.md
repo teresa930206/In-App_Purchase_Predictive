@@ -21,8 +21,7 @@ Given that our target variable, "In-App Purchase," and the majority of variables
 - Decision Tree Classifier
 - Gradient Boosting Classifier
 
-***Metrics for Model Evaluation(Classification Model)***
-Based on the classification model, we apply several metrics to evaluate the model:
+***Metrics for Model Evaluation(Classification Model):***
 - Confusion Matrix
 - Precision / Recall / F-1 Score
 - Receiver Operating Characteristic Curve (ROC) and Area Under the Curve (AUC)
