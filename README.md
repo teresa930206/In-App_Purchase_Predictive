@@ -3,13 +3,13 @@
 ***Overview of Dataset***
 >- The project trained ensemble models using 2M data entries from the "2017~2020 Google Play Store Applications" dataset by majority
 voting method and compared metrics with individual models to aid investors in decision-making.
->- We are using the "Google Play Store Applications" dataset collected in June 2021 in our final project. The initial dataset had 2,312,944 entries and 24 features.
+>- I used the "Google Play Store Applications" dataset collected in June 2021 in our final project. The initial dataset had 2,312,944 entries and 24 features.
 
 ***Data Dictionary***
 
 <img src="graphs/datadictionary.png" alt="Graph" width="500">
 
-After reviewing the features of the initial dataset, we are curious about the availability and transparency of “In-App Purchases” and see the role it plays in shaping user preferences, app strategies, and the overall competitiveness and success of mobile applications in the market.
+After reviewing the features of the initial dataset, I am curious about the availability and transparency of “In-App Purchases” and see the role it plays in shaping user preferences, app strategies, and the overall competitiveness and success of mobile applications in the market.
 >***Use Cases:***
 >- Role: Software Investor
 >- Goal: Assists investors in identifying and leveraging the features of mobile apps that maximize their benefits.
@@ -33,9 +33,21 @@ In contrast, the cost of false negatives (missed In-App purchases) is not high i
 
 ***Undersampling***
 
-We first checked the data distribution of the target variable “In-App Purchases” and the variable contained the class imbalance issue. The percentage of "false" is 91.6%, significantly higher than the 8.44% of "true." Therefore, we resample the data by using undersampling.
+I first checked the data distribution of the target variable “In-App Purchases” and the variable contained the class imbalance issue. The percentage of "false" is 91.6%, significantly higher than the 8.44% of "true." Therefore, we resample the data by using undersampling.
 <img src="graphs/before_unsam.png" alt="Graph" width="500">
 
 After the undersampling, we changed the proportion of “false” and “true” to 2:1. Since a specific percentage difference can accurately represent the real data distribution, we have chosen to retain some data imbalance and have not adjusted the ratio between the two categories to make them equal.
 
 <img src="graphs/after_unsam.png" alt="Graph" width="500">
+
+***Droping Columns***
+
+I dropped the columns that are highly unique or contain non-related information, such as URL or email address.
+
+<img src="graphs/drop_column.png" alt="Graph" width="500">
+
+***Missing Values***
+
+I examined the dataset for null values, and the table below displays the total count of missing values for each variable that contains null values.
+
+<img src="graphs/missing_value.png" alt="Graph" width="500">
