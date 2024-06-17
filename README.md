@@ -37,4 +37,5 @@ We first checked the data distribution of the target variable “In-App Purchase
 <img src="graphs/before_unsam.png" alt="Graph" width="500">
 
 After the undersampling, we changed the proportion of “false” and “true” to 2:1. Since a specific percentage difference can accurately represent the real data distribution, we have chosen to retain some data imbalance and have not adjusted the ratio between the two categories to make them equal.
+
 <img src="graphs/after_unsam.png" alt="Graph" width="500">
