@@ -62,7 +62,7 @@ The dataset contained complicated categorical data, and many columns required pr
 
 ***Data Encoding***
 
-We applied ```LabelEncoder() from sklearn to encode the categorical values.
+We applied ```bash LabelEncoder() from sklearn to encode the categorical values.
 <img src="graphs/data_encode.png" alt="Graph" width="500">
 
 
