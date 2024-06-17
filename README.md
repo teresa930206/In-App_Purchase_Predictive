@@ -62,7 +62,19 @@ The dataset contained complicated categorical data, and many columns required pr
 
 ***Data Encoding***
 
-We applied ```bash LabelEncoder() from sklearn to encode the categorical values.
+I applied **LabelEncoder()** from sklearn to encode the categorical values.
 <img src="graphs/data_encode.png" alt="Graph" width="500">
+
+***Outlier***
+
+I checked the outlier of numerical variables using **IQR value and box plot**.
+<img src="graphs/outlier.png" alt="Graph" width="500">
+<img src="graphs/outlier_1.png" alt="Graph" width="500">
+
+Additionally, I only processed the outliers in **Install_Avg** and retain outliers in other fields to accurately represent real-world app store installation situations.
+
+## **Exploratory Data Analysis**
+After initializing the data cleaning and imputation, we conducted an exploration of the variables.
+● "Install_Avg" and "In-App Purchases" relationship: When "In-App Purchases" is 0, the average "Install Avg" is significantly higher at 130,870, compared to 1,195,096 when "In-App Purchases" is 1.
 
 
