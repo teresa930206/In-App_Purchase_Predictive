@@ -135,7 +135,7 @@ The best random forest model has a precision of 0.73, a recall of 0.53, and an F
 
 Additionally, we examined the ROC curve, which enables us to assess the trade-offs between True Positive Rates and False Positive Rates. The ROC curve allows us to compare the TPR and FPR. The TPR was 0.52, and the FPR was 0.473. Both scores were similar, but the curve displayed a noticeable deviation from the top-left corner (0,1), indicating a gap from the ideal score of 1. When considering the slightly higher TPR, the model is more effective at correctly identifying positive cases, thereby minimizing false negatives.
 
-<img src="graphs/rf_4.png" alt="Graph" width="600">
+<img src="graphs/rf_4.png" alt="Graph" width="500">
 
 The Precision-Recall curve (PR curve) reflects poor performance in terms of recall. The **recall score is low at 0.53**, resulting in a significant gap between the top-right corner (1,1) and the curve. Ideally, the curve should closely approach the corner, but this gap indicates a substantial distance between the corner and the curve. This reflects the model's poor recall scores, indicating that it struggles to properly distinguish positive values.
 Additionally, it took **1.53 seconds to train this model**.
@@ -147,7 +147,7 @@ Update Interval Days' plays a significant role in reducing impurity, suggesting 
 
 The 'Update Interval Days' has the most significant impact. When the 'Update Interval Days' are lower (closer to 0), the average 'In App Purchases' is also lower, at around 0.16 to 0.32. As 'Update Interval Days' increase, the average 'In App Purchases' generally show an upward trend, peaking at around 0.51 for an 'Update Interval Days' of 4.9. Additionally, the 'Rating' also has a notable effect on the increase in 'In-App Purchases.' When the rating increases, the purchases have lower figures, while with an increasing rating, the purchases increase. However, when comparing other features, such as price, install_avg, and content_Rating, they did not appear to significantly affect purchase.
 
-<img src="graphs/rf_5.png" alt="Graph" width="800">
+<img src="graphs/rf_5.png" alt="Graph" width="400">
 
 
 
