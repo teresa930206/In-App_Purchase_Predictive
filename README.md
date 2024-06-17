@@ -101,6 +101,54 @@ After initializing the data cleaning and imputation, we conducted an exploration
 <img src="graphs/eda_7.png" alt="Graph" width="500">
 
 In addition, we observed that when apps had a higher number of rating counts, they were more likely to be purchased.
+## **Data Modeling Preprocessing**
+***Target and Feature variables***
+<img src="graphs/target_feature.png" alt="Graph" width="500">
+
+***Data Splitting and Normalization***
+
+We imported the train_test_split function from sklearn.model_selection to randomly split the train and test datasets. Import StandardScaler from sklearn.preprocessing to normalize feature variables.
+<img src="graphs/data_split_normal.png" alt="Graph" width="500">
+
+## **Random Forest Classifier**
+
+***Hyperparameter Tunning (Cross Validation)***
+In hyperparameter tuning, we import the **RandomizedSearchCV** function from **sklearn.model_selection** to optimize the model's performance. We apply the best hyperparameter on the train datasets (X_train, y_train).
+<img src="graphs/rf_1.png" alt="Graph" width="500">
+
+Pairs of parameters were examined using cross-validation, and the best parameters were selected based on the 'Precision' score, which considers balanced model performance.
+
+***Model_Tuning (Controlling imBalance)***
+The target variable exhibited an imbalance, with the number of data points labeled as '1' constituting 33% of the total data, while '0' accounted for the rest. While the imbalance was not severe, we sought to enhance the model's performance by applying class weights and **SMOTE (Synthetic Minority Over-sampling Technique)**.
+
+After applying class weights and SMOTE, the F1 score improved; however, our primary metric of interest, 'precision,' did not exhibit the same improvement. As a result, we concluded that the basic Random Forest model, without any further tuning, performed best for our purposes.
+<img src="graphs/rf_2.png" alt="Graph" width="500">
+
+***Model Evaluation***
+The best random forest model has a precision of 0.73, a recall of 0.53, and an F1-score of 0.61. Comparatively, higher precision and lower recall indicate a large number of False Negatives. As seen in the confusion matrix, there are 13,688 positives ('purchased') misclassified as negatives ('no purchased'). In comparison, the number of False Positives is low at 5512. This model exhibits higher precision and comparably lower recall.
+<img src="graphs/rf_3.png" alt="Graph" width="500">
+
+Additionally, we examined the ROC curve, which enables us to assess the trade-offs between True Positive Rates and False Positive Rates. The ROC curve allows us to compare the TPR and FPR. The TPR was 0.52, and the FPR was 0.473. Both scores were similar, but the curve displayed a noticeable deviation from the top-left corner (0,1), indicating a gap from the ideal score of 1. When considering the slightly higher TPR, the model is more effective at correctly identifying positive cases, thereby minimizing false negatives.
+<img src="graphs/rf_4.png" alt="Graph" width="500">
+
+The Precision-Recall curve (PR curve) reflects poor performance in terms of recall. The recall score is low at 0.53, resulting in a significant gap between the top-right corner (1,1) and the curve. Ideally, the curve should closely approach the corner, but this gap indicates a substantial distance between the corner and the curve. This reflects the model's poor recall scores, indicating that it struggles to properly distinguish positive values.
+Additionally, it took **1.53 seconds to train this model**.
+
+***Feature Importance***
+In the Random forest, the following features were considered important features in the specified order: ‘Update Interval Days’, 'Rating', 'Min Version', ‘Category’, Rating Count', ‘Editors Choice’, 'Free', 'size_numeric(KB)', 'Ad supported', ‘Currency’, ‘Price','Installs_average' and , 'Content Rating'.
+
+Update Interval Days' plays a significant role in reducing impurity, suggesting that it's a strong predictor for splitting the data at the root node or top-level nodes of the decision trees in the forest. 'Rating' is the second most important feature for reducing impurity, indicating its importance in making decisions in the trees. On the other hand, 'Price,' 'Installs_average,' and 'Content Rating' reduce less impurity, while the other features show similar impacts on reducing impurity.
+
+The 'Update Interval Days' has the most significant impact. When the 'Update Interval Days' are lower (closer to 0), the average 'In App Purchases' is also lower, at around 0.16 to 0.32. As 'Update Interval Days' increase, the average 'In App Purchases' generally show an upward trend, peaking at around 0.51 for an 'Update Interval Days' of 4.9. Additionally, the 'Rating' also has a notable effect on the increase in 'In-App Purchases.' When the rating increases, the purchases have lower figures, while with an increasing rating, the purchases increase. However, when comparing other features, such as price, install_avg, and content_Rating, they did not appear to significantly affect purchase.
+
+<img src="graphs/rf_5.png" alt="Graph" width="500">
+
+
+
+
+
+
+
 
 
 
