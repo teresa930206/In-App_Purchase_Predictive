@@ -273,12 +273,16 @@ The model performs reasonably well in identifying false positives and cases with
 ## **Reference**
 Aaryansh Sahay, n.d., ROC/AUC in Machine Learning, medium.com,
 https://python.plainenglish.io/roc-auc-in-machine-learning-d70d4308f636
+
 scikit-learn, (n.d.). Plot different SVM classifiers in the iris dataset. scikit-learn: Machine Learning in Python.
 https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_display_object_visua lization.html#sphx-glr-auto-examples-miscellaneous-plot-display-object-visualization -py
+
 scikit-learn, (n.d.). sklearn.ensemble.GradientBoostingClassifier¶.
 https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingC lassifier.html
+
 Mode (2023). Pandas .groupby(), Lambda Functions, & Pivot Tables. Mode 
 https://mode.com/python-tutorial/pandas-groupby-and-python-lambda-functions/
+
 Google Play Store Apps. Kaggle 
 https://www.kaggle.com/datasets/gauthamp10/google-playstore-apps/data
 
