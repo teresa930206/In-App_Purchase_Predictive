@@ -242,7 +242,7 @@ As you can see in the following graph, the feature importance analysis reveals t
 
 According to the feature importance, we notice that “Category” contain highly influence to our best model. We further analyze the proportion of each category contained “In-App Purchase” service. The result showed that 'Casio' (49%) and 'Role Playing' (46%) categories exhibited the highest proportion of in-app purchase service.
 
-<img src="graphs/xg_7.png" alt="Graph" width="500">
+<img src="graphs/xg_7.png" alt="Graph" width="300">
 
 ## **Conclusion**
 After training the model in basic, class_weight, and SMOTE, all model perform well in basic version. We took the three basic models and compare them using “precision”, “recall”, “F1”, and time for training. The result revealed that “XGBoosting” is more performed than others.
