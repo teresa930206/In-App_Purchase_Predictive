@@ -6,7 +6,6 @@ voting method and compared metrics with individual models to aid investors in de
 >- We are using the "Google Play Store Applications" dataset collected in June 2021 in our final project. The initial dataset had 2,312,944 entries and 24 features.
 
 ***Data Dictionary***
-![Sample Graph](graphs/datadictionary.png)
 <img src="graphs/datadictionary.png" alt="Graph" width="500">
 
 After reviewing the features of the initial dataset, we are curious about the availability and transparency of “In-App Purchases” and see the role it plays in shaping user preferences, app strategies, and the overall competitiveness and success of mobile applications in the market.
@@ -25,6 +24,7 @@ Based on the classification model, we apply several metrics to evaluate the mode
 - Precision / Recall / F-1 Score
 - Receiver Operating Characteristic Curve (ROC) and Area Under the Curve (AUC)
 - Precision-Recall Curve
+
 Precision is a crucial metric in this report. In the mobile app store market, the cost of false positives (predicting In-App purchases when they won't occur) is significant. Therefore, our prediction strategy focuses on minimizing false positives and ensuring accurate positive predictions to maximize profits from In-App purchases.
 In contrast, the cost of false negatives (missed In-App purchases) is not high in our case, as we assume the cost of encouraging purchases is relatively low. Even if a purchase would have occurred naturally without our efforts, the additional cost is not substantial.
 ## **Data Resampling and Cleaning**
