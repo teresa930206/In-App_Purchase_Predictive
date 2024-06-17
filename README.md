@@ -34,6 +34,7 @@ In contrast, the cost of false negatives (missed In-App purchases) is not high i
 ***Undersampling***
 
 I first checked the data distribution of the target variable “In-App Purchases” and the variable contained the class imbalance issue. The percentage of "false" is 91.6%, significantly higher than the 8.44% of "true." Therefore, we resample the data by using undersampling.
+
 <img src="graphs/before_unsam.png" alt="Graph" width="500">
 
 After the undersampling, we changed the proportion of “false” and “true” to 2:1. Since a specific percentage difference can accurately represent the real data distribution, we have chosen to retain some data imbalance and have not adjusted the ratio between the two categories to make them equal.
